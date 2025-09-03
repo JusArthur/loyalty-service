@@ -87,22 +87,8 @@ app.post("/api/customers/:id/purchase", (req: Request, res: Response): void => {
         multiplier = 1.2;
     }
 
-    // Give multipler for purchases over specific prices
-    let purchaseMultiplier = 1;
-    if (purchaseAmount >= 1000 && purchaseAmount < 2000) {
-        purchaseMultiplier = 1.5
-    } else if (purchaseAmount >= 2000) {
-        purchaseMultiplier = 2
-    }
-
-    // Extra multiplier for purchases at preferred store
-    let final_mult = multiplier * purchaseMultiplier;
-    if (final_mult > 3) {
-        final_mult = 3 // Cap the maximum multiplier to 3
-    }
-
     const basePoints = Math.floor(purchaseAmount / 10);
-    const pointsEarned = Math.floor(basePoints * final_mult);
+    const pointsEarned = Math.floor(basePoints * multiplier);
 
     customer.points += pointsEarned;
     customer.lastPurchaseDate = new Date().toISOString();
