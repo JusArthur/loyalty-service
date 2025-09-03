@@ -87,6 +87,7 @@ app.post("/api/customers/:id/purchase", (req: Request, res: Response): void => {
         multiplier = 1.2;
     }
 
+
     // Give multipler for purchases over specific prices
     let purchaseMultiplier = 1;
     if (purchaseAmount >= 1000 && purchaseAmount < 2000) {
