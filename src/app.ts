@@ -91,7 +91,7 @@ app.post("/api/customers/:id/purchase", (req: Request, res: Response): void => {
     let purchaseMultiplier = 1;
     if (purchaseAmount >= 1000 && purchaseAmount < 2000) {
         purchaseMultiplier = 1.5
-    } else if (purchaseAmount >= 2000) {
+    } else if (purchaseAmount >= 5000) { // changed based on yunfei's comment
         purchaseMultiplier = 2
     }
 
